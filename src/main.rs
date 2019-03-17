@@ -1,71 +1,16 @@
-//extern crate rand;
-
-//use std::collections::HashMap;
-//use rand::Rng;
-
 extern crate rusty_markov_chain;
-//use rusty_markov_chain::Possibilities;
+
 use rusty_markov_chain::Markov;
 
 fn main() {
-
-let mut markov = Markov::new();
-
-markov.chain("the theremin is theirs or is it not theirs".to_string(), 3);
-
-
-println!("{:?}", markov.map.keys());
-
-/*
-  let mut rng = rand::thread_rng();
-  let string = "the theremin is theirs or is it not theirs";
-  let mut m = 0;
-  let mut n = 3;
-  let mut map = HashMap::new();
+    let mut markov = Markov::new();
+    //let string = String::from("the theremin is theirs or is it not theirs");
+    //let string = String::from("to be or not to be, that is the question");
+    let string = String::from("below the thunders of the upper deep far far beneath in the abysmal sea his ancient dreamless uninvaded sleep the kraken sleepeth faintest sunlights flee about his shadowy sides above him swell huge sponges of millennial growth and height and far away into the sickly light from many a wondrous grot and secret cell unnumbered and enormous polypi winnow with giant arms the slumbering green there hath he lain for ages and will lie battening upon huge sea worms in his sleep until the latter fire shall heat the deep then once by man and angels to be seen in roaring he shall rise and on the surface die");
     
-  while n < string.len() {
-
-    let vec = map.entry(&string[m..n]).or_insert(Vec::new());
-    vec.push(&string[n..n + 1]);
-    m += 1;
-    n += 1;
-
-  }
-
-  //println!("{:?}", map);
-  
-  m = 0;
-  n = 3;
-
-  let mut result; 
-  let mut current = &string[m..n];
-  let mut resultado;
-  
-
-  result = String::from(current);
-  
-  
-  while m < 10 {
-	let possibilities = map.get(current).unwrap();
-	let next = possibilities[rng.gen_range(0, possibilities.len())];
-	
-	
-	
-	result.push_str(&next);
-	let len = result.len();
-    println!("len: {}", len);
+    markov.chain(string, 3);
     
-      resultado = &result.clone();
-      current = &resultado.get(len - 3..len).unwrap();
+    //println!("{:?}", markov);
     
-	m += 1;  
-	
-	println!("{:?}", &result);
-  }
-  
-  
-
-  
-  
-    */
+    markov.generate(String::from("bel"), 500);
 }
