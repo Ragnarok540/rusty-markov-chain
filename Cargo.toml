@@ -1,5 +1,5 @@
 [package]
-name = "rusty-markov-chain"
+name = "rusty_markov_chain"
 version = "0.1.0"
 authors = ["Edgar Nova <ragnarok540@gmail.com>"]
 
