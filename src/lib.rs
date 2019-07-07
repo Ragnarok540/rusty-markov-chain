@@ -1,6 +1,7 @@
 extern crate rand;
 use rand::Rng;
 use std::collections::HashMap;
+use std::fs;
 
 #[derive(Debug)]
 pub struct Markov {
@@ -32,7 +33,14 @@ impl Markov {
             j += 1;
         }
     }
-    
+
+    pub fn chain_file(&mut self, filename: String, size: usize) {
+        let contents = fs::read_to_string(filename)
+            .expect("Something went wrong reading the file");
+
+        self.chain(contents, size)
+    }
+
     pub fn generate(&mut self, start: String, times: usize) {
         let mut i = 0;
         let mut rng = rand::thread_rng();
